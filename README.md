@@ -20,8 +20,3 @@ Crear un programa sencillo en Python que solicite **dos datos al usuario (nombre
 
 3. **Mezcla final sin patrones**
    - Se aplica un **barajado tipo Fisher–Yates** usando `secrets.randbelow(...)` para evitar que los primeros cuatro caracteres sean siempre de tipos fijos (mayúscula, minúscula, dígito, símbolo).
-
-4. **Punto de entrada controlado**
-   - El bloque `if __name__ == "__main__":` llama a `main()` **solo** cuando el archivo se ejecuta directamente.
-   - Si el archivo se importa como módulo en otro script, **no** se activa el flujo interactivo.
-
