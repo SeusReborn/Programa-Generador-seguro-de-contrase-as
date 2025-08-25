@@ -10,27 +10,35 @@ def generar_contrasena(longitud=12):
     digitos = string.digits
     simbolos = "!@#$%&*-_?."
     
-    # Aqui selecciono almenos uno de cada tipo
+    # Aseguro al menos uno de cada tipo
     base = [
         secrets.choice(mayus),
         secrets.choice(minus),
         secrets.choice(digitos),
         secrets.choice(simbolos),
     ]
-    # Completo la longitud que deseo
+    # Completo hasta la longitud deseada
     universo = mayus + minus + digitos + simbolos
     while len(base) < longitud:
         base.append(secrets.choice(universo))
     
-    # Mezclo Aleatoriamente
+    # Mezcla segura
     secrets.SystemRandom().shuffle(base)
     return "".join(base)
 
+def pedir_dato(texto):
+    """Pide un dato y valida que contenga solo letras."""
+    while True:
+        valor = input(texto).strip()
+        if valor.isalpha():
+            return valor
+        else:
+            print("Solo se permiten letras, intenta de nuevo.")
+
 def main():
-    nombre = input("¿Cuál es tu nombre? ").strip()
-    apellido = input("¿Cuál es tu apellido? ").strip()
+    nombre = pedir_dato("¿Cuál es tu nombre? ")
+    apellido = pedir_dato("¿Cuál es tu apellido? ")
     
-    # Por seguridad, NO uso el nombre ni apellido del usuario
     contrasena = generar_contrasena(12)
     print(f"\nListo, {nombre} {apellido}. Tu contraseña segura es:\n{contrasena}")
 
